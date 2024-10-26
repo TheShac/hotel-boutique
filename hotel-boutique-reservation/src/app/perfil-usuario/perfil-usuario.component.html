@@ -1,0 +1,69 @@
+<div class="container mt-5">
+    <!-- Datos del Usuario -->
+    <div class="card mb-4">
+      <div class="card-body">
+        <h3 class="card-title">Perfil de Usuario</h3>
+        <p><strong>Nombre:</strong> {{ usuario.nombre }}</p>
+        
+        <!-- Agregamos una referencia local al campo de email -->
+        <p><strong>Email:</strong>
+          <input type="email" #emailInput [(ngModel)]="usuario.email" class="form-control d-inline-block w-50" />
+          <button class="btn btn-secondary" (click)="enfocarEmail(emailInput)">Editar Email</button>
+        </p>
+  
+        <p><strong>Fecha de Registro:</strong> {{ usuario.fechaRegistro }}</p>
+      </div>
+    </div>
+  
+    <!-- Reservas Actuales -->
+    <h4>Reservas Actuales</h4>
+    <div *ngIf="reservas.length === 0" class="alert alert-info">
+      <p>No tienes reservas actuales.</p>
+    </div>
+  
+    <div *ngIf="reservas.length > 0">
+      <div *ngFor="let reserva of reservas" class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <!-- Imagen simulada -->
+            <img src="https://via.placeholder.com/150" class="img-fluid rounded-start" alt="Habitación">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{ reserva.habitacion.nombre }}</h5>
+              <p class="card-text">{{ reserva.habitacion.descripcion }}</p>
+              <p class="card-text"><strong>Precio:</strong> {{ reserva.habitacion.precio | currency }}</p>
+              <p class="card-text"><small class="text-muted">Fecha de reserva: {{ reserva.fecha }}</small></p>
+              <button class="btn btn-danger">Cancelar Reserva</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Historial de Reservas -->
+    <h4 class="mt-5">Historial de Reservas</h4>
+    <div *ngIf="historialReservas.length === 0" class="alert alert-info">
+      <p>No tienes reservas anteriores.</p>
+    </div>
+  
+    <div *ngIf="historialReservas.length > 0">
+      <div *ngFor="let reserva of historialReservas" class="card mb-3">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <!-- Imagen simulada -->
+            <img src="https://via.placeholder.com/150" class="img-fluid rounded-start" alt="Habitación">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{ reserva.habitacion.nombre }}</h5>
+              <p class="card-text">{{ reserva.habitacion.descripcion }}</p>
+              <p class="card-text"><strong>Precio:</strong> {{ reserva.habitacion.precio | currency }}</p>
+              <p class="card-text"><small class="text-muted">Fecha de reserva: {{ reserva.fecha }}</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

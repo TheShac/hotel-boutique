@@ -1,0 +1,22 @@
+<div class="container">
+  <h2 class="text-center">Catálogo de Habitaciones</h2>
+  <div class="carousel-container">
+      <button class="arrow left-arrow" (click)="desplazarIzquierda()">&#10094;</button>
+      <div class="scroll-container" [style.transform]="'translateX(-' + desplazamiento + 'px)'">
+          <div class="card-container" *ngFor="let habitacion of habitaciones">
+              <div class="card mb-4 shadow border-light" [routerLink]="['/habitacion', habitacion.id]">
+                  <img src="{{ habitacion.imagenUrl }}" class="card-img-top" alt="{{ habitacion.nombre }}" />
+                  <div class="card-body">
+                      <h5 class="card-title">{{ habitacion.nombre }}</h5>
+                      <p><strong>Precio:</strong> {{ habitacion.precio }}</p>
+                      <p><strong>Disponibilidad:</strong> {{ habitacion.Disponibilidad }}</p>
+                      <button class="btn btn-primary" (click)="agregarAlCarrito(habitacion)" [disabled]="habitacion.Disponibilidad <= 0">
+                          {{ habitacion.Disponibilidad > 0 ? 'Reservar' : 'No disponible' }}
+                      </button>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <button class="arrow right-arrow" (click)="desplazarDerecha()">&#10095;</button>
+  </div>
+</div>

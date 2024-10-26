@@ -1,0 +1,21 @@
+
+
+<div class="container" *ngIf="habitacion">
+  <!-- Botón de Volver al catálogo -->
+  <button class="btn btn-secondary mb-4" (click)="volverAlCatalogo()">Volver al Catálogo</button>
+
+  <!-- Información de la habitación -->
+  <h2>{{ habitacion.nombre }}</h2>
+  <p><strong>Precio:</strong> {{ habitacion.precio | currency:'CLP':'symbol':'1.0-0' }}</p>
+  <p><strong>Disponibilidad:</strong> {{ habitacion.disponibilidad }}</p>
+  <p><strong>Descripción:</strong> {{ habitacion.descripcion }}</p>
+
+  <!-- Imágenes de la habitación -->
+  <h3>Imágenes de la habitación</h3>
+  <div class="imagenes">
+    <img *ngFor="let img of habitacion.fotos" [src]="img" alt="{{ habitacion.nombre }}" class="img-fluid" />
+  </div>
+
+  <!-- Botón de Reservar Habitación -->
+  <button (click)="reservarHabitacion()" class="btn btn-primary mt-4">Reservar Habitación</button>
+</div>

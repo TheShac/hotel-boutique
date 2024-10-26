@@ -1,0 +1,16 @@
+.container {
+    padding-top: 20px;
+  }
+  
+  .card img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .card-body {
+    padding: 15px;
+  }
+  
+body{
+  background-image: url('assets/fondo1.jpg');
+}

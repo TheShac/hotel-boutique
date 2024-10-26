@@ -1,0 +1,22 @@
+<div class="container">
+    <h2>Carrito de Compras</h2>
+    <div *ngIf="carrito.length === 0">
+      <p>No has seleccionado ninguna habitación.</p>
+    </div>
+  
+    <div *ngIf="carrito.length > 0">
+      <div *ngFor="let item of carrito" class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.habitacion.nombre }}</h5>
+          <p class="card-text">{{ item.habitacion.descripcion }}</p>
+          <p><strong>Precio:</strong> {{ item.habitacion.precio | currency }}</p>
+        </div>
+      </div>
+  
+      <div>
+        <h4>Total: {{ calcularTotal() | currency }}</h4>
+        <button (click)="finalizarCompra()" class="btn btn-success">Finalizar Compra</button>
+      </div>
+    </div>
+  </div>
+  
